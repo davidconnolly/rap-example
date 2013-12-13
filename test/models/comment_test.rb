@@ -1,7 +1,12 @@
-require 'test_helper'
+require_relative '../test_helper'
 
 class CommentTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_create_defaults
+  end
+  
+  def test_create_requirements
+  end
+
+  def test_create_dummy
+  end
 end

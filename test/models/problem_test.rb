@@ -10,7 +10,6 @@ class ProblemTest < ActiveSupport::TestCase
     )
 
     assert_created problem
-    assert_nil problem.estimate
   end
   
   def test_create_requirements
