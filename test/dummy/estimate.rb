@@ -5,5 +5,4 @@ class Estimate
   end
 
   dummy :customer
-
 end

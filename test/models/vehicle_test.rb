@@ -11,6 +11,9 @@ class VehicleTest < ActiveSupport::TestCase
     )
 
     assert_created vehicle
+    assert_created vehicle.customer
+    
+    assert_equal 0, vehicle.problems.count
   end
   
   def test_create_requirements
@@ -23,15 +26,15 @@ class VehicleTest < ActiveSupport::TestCase
   def test_create_dummy
     vehicle = a Vehicle
 
-    assert_equal 0, vehicle.problems.count
     assert_created vehicle
     assert_created vehicle.customer
+    assert_equal 0, vehicle.problems.count
   end
 
   def test_add_problem
     vehicle = a Vehicle
-    
     problem = vehicle.problems.create_dummy
+
     assert_equal 1, vehicle.problems.count
     
     assert_equal vehicle.problems.first.id, problem.id

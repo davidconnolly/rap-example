@@ -10,6 +10,11 @@ class EstimateTest < ActiveSupport::TestCase
     )
 
     assert_created estimate
+    assert_created estimate.customer
+
+    assert_equal 0, estimate.comments.count
+    assert_equal 0, estimate.problems.count
+    assert_nil estimate.invoice
   end
   
   def test_create_requirements
@@ -23,16 +28,17 @@ class EstimateTest < ActiveSupport::TestCase
     estimate = an Estimate
 
     assert_created estimate
+    assert_created estimate.customer
+
     assert_equal 0, estimate.comments.count
     assert_equal 0, estimate.problems.count
-    assert_created estimate.customer
     assert_nil estimate.invoice
   end
 
   def test_add_comment
     estimate = a Estimate
-
     comment = estimate.comments.create_dummy
+    
     assert_equal 1, estimate.comments.count
 
     assert_equal estimate.comments.first.id, comment.id 

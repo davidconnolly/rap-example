@@ -11,6 +11,10 @@ class Comment < ActiveRecord::Base
 
   # == Validations ==========================================================
 
+  validates :note, presence: true
+  
+  validates :record, presence: true
+
   # == Callbacks ============================================================
 
   # == Scopes ===============================================================

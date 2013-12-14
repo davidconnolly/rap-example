@@ -10,6 +10,10 @@ class ProblemTest < ActiveSupport::TestCase
     )
 
     assert_created problem
+    assert_created problem.vehicle
+
+    assert_equal 0, problem.comments.count
+    assert_nil problem.estimate
   end
   
   def test_create_requirements
@@ -23,15 +27,16 @@ class ProblemTest < ActiveSupport::TestCase
     problem = a Problem
 
     assert_created problem
-    assert_equal 0, problem.comments.count
     assert_created problem.vehicle
+
+    assert_equal 0, problem.comments.count
     assert_nil problem.estimate
   end
 
   def test_add_comment
     problem = a Problem
-
     comment = problem.comments.create_dummy
+    
     assert_equal 1, problem.comments.count
 
     assert_equal problem.comments.first.id, comment.id 

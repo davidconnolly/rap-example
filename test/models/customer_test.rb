@@ -5,10 +5,12 @@ class CustomerTest < ActiveSupport::TestCase
     customer = Customer.create(
       name: "TestName"      
     )
+    
     assert_created customer
 
     assert_equal 0, customer.vehicles.count
     assert_equal 0, customer.invoices.count
+    assert_equal 0, customer.estimates.count
   end
   
   def test_create_requirements
@@ -21,14 +23,17 @@ class CustomerTest < ActiveSupport::TestCase
   def test_create_dummy
     customer = a Customer
 
-    assert_equal 0, customer.vehicles.count
     assert_created customer
+
+    assert_equal 0, customer.vehicles.count
+    assert_equal 0, customer.invoices.count
+    assert_equal 0, customer.estimates.count
   end
 
   def test_add_vehicle
     customer = a Customer
-    
     vehicle = customer.vehicles.create_dummy
+    
     assert_equal 1, customer.vehicles.count
     
     assert_equal customer.vehicles.first.id, vehicle.id
