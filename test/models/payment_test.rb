@@ -5,7 +5,8 @@ class PaymentTest < ActiveSupport::TestCase
     invoice = a Invoice
 
     payment = Payment.create(
-      invoice: invoice
+      invoice: invoice,
+      amount: 1000
     )
 
     assert_created payment
@@ -16,7 +17,7 @@ class PaymentTest < ActiveSupport::TestCase
     payment = Payment.create
 
     assert_not_created payment
-    assert_errors_on payment, :invoice
+    assert_errors_on payment, :invoice, :amount
   end
 
   def test_create_dummy
@@ -24,5 +25,18 @@ class PaymentTest < ActiveSupport::TestCase
 
     assert_created payment
     assert_created payment.invoice
+  end
+
+  def test_invalid_payment
+    invoice = a Invoice
+
+    payment = Payment.create(
+      invoice: invoice,
+      amount: 0
+    )
+
+    assert_not_created payment
+    #how do I test for a specific error?
+    #assert_errors_on payment, :?????
   end
 end

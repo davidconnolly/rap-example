@@ -47,6 +47,61 @@ class EstimateTest < ActiveSupport::TestCase
   end
   
   def test_generate_invoice
+    estimate = a Estimate
+    estimate.generate_invoice
+
+    assert_created estimate.invoice
+    assert_equal estimate.invoice.cost_total, estimate.cost
+  end
+
+  def test_generate_existing_invoice
+    estimate = a Estimate
+    invoice1 = estimate.generate_invoice
+    invoice2 = estimate.generate_invoice
+
+    assert_equal estimate.cost, invoice1.cost_total, invoice2.cost_total
+    assert_equal invoice1.id, invoice2.id
+  end
+
+  def test_update_invoice
+    invoice = an Invoice
+    customer = a Customer
+    estimate = Estimate.create(
+      cost: 10000,
+      customer: customer,
+      invoice: invoice
+    )
+    
+    assert_equal estimate.invoice.cost_total, 10000
+    estimate.update_attributes(cost: 50000)
+    assert_equal estimate.invoice.cost_total, 50000
+  end
+
+  def test_destroy_invoice
+    invoice = an Invoice
+    customer = a Customer
+    estimate = Estimate.create(
+      cost: 10000,
+      customer: customer,
+      invoice: invoice
+    )
+
+    estimate.destroy
+
+    assert_nil estimate.invoice.cost_total
+  end
+
+  def test_invalid_estimate
+    customer = a Customer
+
+    estimate = Estimate.create(
+      cost: 0,
+      customer: customer
+    )
+
+    assert_not_created estimate
+    #how do I test for a specific error?
+    #assert_errors_on estimate, :?????
   end
 
 end
