@@ -77,7 +77,7 @@ class EstimateTest < ActiveSupport::TestCase
     assert_equal estimate.invoice.cost_total, 50000
   end
 
-  def test_destroy_invoice
+  def test_remove_from_invoice
     invoice = an Invoice
     customer = a Customer
     estimate = Estimate.create(
@@ -88,7 +88,7 @@ class EstimateTest < ActiveSupport::TestCase
 
     estimate.destroy
 
-    assert_nil estimate.invoice.cost_total
+    assert_equal estimate.invoice.cost_total, 0
   end
 
   def test_invalid_estimate

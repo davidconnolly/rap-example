@@ -26,7 +26,7 @@ class Estimate < ActiveRecord::Base
   # == Callbacks ============================================================
 
   after_save :update_invoice
-  before_destroy :destroy_invoice
+  before_destroy :remove_from_invoice
 
   # == Scopes ===============================================================
 
@@ -55,10 +55,10 @@ private
     end
   end
 
-  def destroy_invoice
+  def remove_from_invoice
     if self.invoice
       #puts 'Removing from invoice ' + self.invoice.to_s + ' Estimate cost ' + self.cost.to_s + "\n"
-      self.invoice.cost_total = nil
+      self.invoice.cost_total = 0
     end
   end
 

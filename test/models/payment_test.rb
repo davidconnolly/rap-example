@@ -27,6 +27,30 @@ class PaymentTest < ActiveSupport::TestCase
     assert_created payment.invoice
   end
 
+  def test_update_invoice
+    invoice = an Invoice
+    payment = Payment.create(
+      invoice: invoice,
+      amount: 1000
+    )
+    
+    assert_equal payment.invoice.amount_paid, 1000
+    payment.update_attributes(amount: 50000)
+    assert_equal payment.invoice.amount_paid, 50000
+  end
+
+  def test_remove_from_invoice
+    invoice = an Invoice
+    payment = Payment.create(
+      invoice: invoice,
+      amount: 1000
+    )
+
+    payment.destroy
+
+    assert_equal payment.invoice.amount_paid, 0
+  end
+
   def test_invalid_payment
     invoice = a Invoice
 
