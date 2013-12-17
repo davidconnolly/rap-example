@@ -3,7 +3,8 @@ class Comment
     Faker::Lorem.paragraph(3).truncate(255)
   end
   
-  dummy only: :with_record do |comment|
-    #????
+  dummy do |comment|
+    #create Invoice, Estimate or Problem
+    comment.record ||= Invoice.create_dummy
   end
 end

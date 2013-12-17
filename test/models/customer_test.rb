@@ -36,8 +36,8 @@ class CustomerTest < ActiveSupport::TestCase
     
     assert_equal 1, customer.vehicles.count
     
-    assert_equal customer.vehicles.first.id, vehicle.id
-    assert_equal customer.vehicles.first.customer.id, customer.id
+    assert_equal vehicle.id, customer.vehicles.first.id
+    assert_equal customer.id, customer.vehicles.first.customer.id
   end
 
 end

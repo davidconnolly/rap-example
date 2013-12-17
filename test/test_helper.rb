@@ -87,4 +87,8 @@ class ActiveSupport::TestCase
   def assert_in_array(array, value)
     assert array.include?(value), "Value was not in the array"
   end
+
+  def parse_json_response
+    JSON.parse(@response.body)
+  end
 end

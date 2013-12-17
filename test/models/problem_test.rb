@@ -39,9 +39,9 @@ class ProblemTest < ActiveSupport::TestCase
     
     assert_equal 1, problem.comments.count
 
-    assert_equal problem.comments.first.id, comment.id 
-    assert_equal problem.comments.first.record.class, Problem
-    assert_equal problem.comments.first.record.id, problem.id
+    assert_equal comment.id, problem.comments.first.id
+    assert_equal Problem, problem.comments.first.record.class
+    assert_equal problem.id, problem.comments.first.record.id
   end
 
   def test_add_estimate
@@ -51,7 +51,7 @@ class ProblemTest < ActiveSupport::TestCase
     problem.estimate = estimate
 
     assert_created problem.estimate
-    assert_equal problem.estimate.id, estimate.id
+    assert_equal estimate.id, problem.estimate.id
   end
 
 end

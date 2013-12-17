@@ -20,8 +20,8 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   def test_create_dummy
-    #comment = a Comment, :with_record
+    comment = a Comment, :with_record
 
-    #assert_created comment
+    assert_created comment
   end
 end

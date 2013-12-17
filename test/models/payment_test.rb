@@ -31,36 +31,67 @@ class PaymentTest < ActiveSupport::TestCase
     invoice = an Invoice
     payment = Payment.create(
       invoice: invoice,
-      amount: 1000
+      amount: 10000
     )
     
-    assert_equal payment.invoice.amount_paid, 1000
+    assert_equal 10000, invoice.amount_paid
+    
+    invoice.reload
     payment.update_attributes(amount: 50000)
-    assert_equal payment.invoice.amount_paid, 50000
+    
+    invoice.reload
+    assert_equal 50000, invoice.amount_paid
   end
 
   def test_remove_from_invoice
     invoice = an Invoice
     payment = Payment.create(
       invoice: invoice,
-      amount: 1000
+      amount: 10000
     )
-
+    
+    assert_equal invoice.amount_paid, 10000
+    
+    invoice.reload
     payment.destroy
-
-    assert_equal payment.invoice.amount_paid, 0
+    
+    invoice.reload
+    assert_equal 0, invoice.amount_paid
   end
 
-  def test_invalid_payment
+  def test_payment_with_low_cost
     invoice = a Invoice
 
     payment = Payment.create(
-      invoice: invoice,
-      amount: 0
+      amount: -1000001,
+      invoice: invoice
     )
 
     assert_not_created payment
-    #how do I test for a specific error?
-    #assert_errors_on payment, :?????
+    assert_errors_on payment, :amount
+  end
+
+  def test_payment_with_zero_cost
+    invoice = a Invoice
+
+    payment = Payment.create(
+      amount: 0,
+      invoice: invoice
+    )
+
+    assert_not_created payment
+    assert_errors_on payment, :amount
+  end
+
+  def test_estimate_with_high_cost
+    invoice = a Invoice
+
+    payment = Payment.create(
+      amount: 1000001,
+      invoice: invoice
+    )
+
+    assert_not_created payment
+    assert_errors_on payment, :amount  
   end
 end
