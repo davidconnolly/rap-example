@@ -17,49 +17,34 @@ class Estimate < ActiveRecord::Base
 
   # == Validations ==========================================================
 
-  validates :cost, presence: true
   # Between $0.01 and $10,000
-  validates :cost, :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 1000000 }
+  validates :cost, 
+    presence: true, 
+    :numericality => { :greater_than_or_equal_to => 1, :less_than_or_equal_to => 1000000 }
   
   validates :customer, presence: true
 
   # == Callbacks ============================================================
 
-  after_save :update_invoice
-  before_destroy :remove_from_invoice
+  after_save :update_invoice_cost_total
+  after_destroy :update_invoice_cost_total
 
   # == Scopes ===============================================================
 
   # == Class Methods ========================================================
 
-  def generate_invoice
-    unless self.invoice
-      Invoice.create( 
-        estimate: self, 
+  # == Instance Methods =====================================================
+
+  def generate_invoice!
+    self.invoice ||=
+      Invoice.create!( 
         customer: self.customer,
         cost_total: self.cost
       )
-    else
-      #puts 'Invoice already exists!''
-      self.invoice
-    end
   end
-
-  # == Instance Methods =====================================================
 
 private
-  def update_invoice
-    if self.invoice
-      #puts 'Adding to invoice ' + self.invoice.to_s + ' Estimate cost ' + self.cost.to_s + "\n"
-      self.invoice.cost_total = self.cost
-    end
+  def update_invoice_cost_total
+    self.invoice && self.invoice.update_cost_total!
   end
-
-  def remove_from_invoice
-    if self.invoice
-      #puts 'Removing from invoice ' + self.invoice.to_s + ' Estimate cost ' + self.cost.to_s + "\n"
-      self.invoice.cost_total = 0
-    end
-  end
-
 end

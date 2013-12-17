@@ -23,7 +23,7 @@ class Invoice < ActiveRecord::Base
   
   # == Callbacks ============================================================
 
-  after_initialize :init
+  after_initialize :assign_defaults
 
   # == Scopes ===============================================================
 
@@ -31,14 +31,19 @@ class Invoice < ActiveRecord::Base
 
   # == Instance Methods =====================================================
 
-private
-  def init
-    unless self.cost_total
-      self.cost_total = 0
-    end
-    unless self.amount_paid
-      self.amount_paid = 0
-    end
+  def update_cost_total!
+    self.cost_total = self.estimate ? self.estimate.cost : 0
+    self.save!
   end
 
+  def update_amount_paid!
+    self.amount_paid = self.payments.sum(:amount)
+    self.save!
+  end
+
+private
+  def assign_defaults
+    self.cost_total ||= 0
+    self.amount_paid ||= 0
+  end
 end
