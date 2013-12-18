@@ -48,4 +48,7 @@ end
 group :development, :test do
   gem 'test_dummy'
   gem 'faker'
+  gem 'faraday'
+  gem 'faraday_middleware'
+  gem 'rash'
 end

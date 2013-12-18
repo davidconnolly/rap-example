@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :build_customer, only: [ :new, :create ]
   before_action :load_customer, except: [ :index, :new, :create ]
   respond_to :json
