@@ -1,4 +1,5 @@
 RapExample::Application.routes.draw do
+  get "ember/start"
   #get "customers/new"
 
   resources :customers
