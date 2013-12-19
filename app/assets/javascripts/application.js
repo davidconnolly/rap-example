@@ -5,6 +5,6 @@
 //= require rap_example
 //-- Create the Ember Application ---------------------------------------------
 
-RapExample = Ember.Application.create({
-  LOG_TRANSITIONS: true
-});
+window.RapExample = Ember.Application.create({
+ LOG_TRANSITIONS: true // basic logging of successful transitions
+})

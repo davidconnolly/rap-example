@@ -6,5 +6,5 @@ RapExample.ActiveModelAdapter = DS.ActiveModelAdapter.extend({
 });
 
 RapExample.Store = DS.Store.extend({
-  adapter: RapIms.ActiveModelAdapter
+  adapter: RapExample.ActiveModelAdapter
 });
