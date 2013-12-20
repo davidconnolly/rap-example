@@ -6,5 +6,3 @@ RapExample.CustomersRoute = Ember.Route.extend({
     controller.set('model', model);
   }
 });
-
-
