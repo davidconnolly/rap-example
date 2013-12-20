@@ -1,8 +1,6 @@
 // app/javascripts/store.js
 
 RapExample.Store = DS.Store.extend({
-  adapter: DS.RESTAdapter
-})
-
-DS.RESTAdapter.reopen
-//  namespace: 'api/v1'
+  revision: 13,
+  adapter: DS.RESTAdapter.create()
+});

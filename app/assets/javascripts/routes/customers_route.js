@@ -1,6 +1,5 @@
 RapExample.CustomersRoute = Ember.Route.extend({
-  model: function(params) {
-    debugger
-    RapExample.Customer.find();
+  model: function() {
+    return this.store.findAll('Customer');
   }
 });
