@@ -1,10 +1,8 @@
-// http://emberjs.com/guides/models/defining-a-store/
-
-RapExample.ApplicationSerializer = DS.ActiveModelSerializer;
-
-RapExample.ActiveModelAdapter = DS.ActiveModelAdapter.extend({
-});
+// app/javascripts/store.js
 
 RapExample.Store = DS.Store.extend({
-  adapter: RapExample.ActiveModelAdapter
-});
+  adapter: DS.RESTAdapter
+})
+
+DS.RESTAdapter.reopen
+//  namespace: 'api/v1'
