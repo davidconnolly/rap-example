@@ -1,4 +1,7 @@
 Customers:
-{{#each customer in controller}}
-  {{render "customer" customer}}
-{{/each}}
+
+<ul>
+  {{#each customer in model}}
+    <li>{{customer.name}}</li>
+  {{/each}}
+</ul>
