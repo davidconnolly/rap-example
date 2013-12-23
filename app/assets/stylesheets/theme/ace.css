@@ -1884,7 +1884,7 @@ blockquote.pull-right {
 .sidebar.sidebar-fixed {
   position: fixed;
   z-index: 1029;
-  top: 55px;
+  top: 45px;
   left: 0;
 }
 .sidebar.fixed:before,
