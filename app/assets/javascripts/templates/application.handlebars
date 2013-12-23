@@ -1,27 +1,20 @@
-<div class="sidebar sidebar-fixed" {{bind-attr class="menuMini:menu-min"}} id="sidebar">
+<div class="sidebar sidebar-fixed" id="sidebar">
   <ul class="nav nav-list">
     {{#active-tag path="index"}}
       {{#link-to "index"}}
-        <i class="icon icon-home"></i>
-        <span class="menu-text">
-          Index
-        </span>
+        <span class="menu-text"> Index </span>
       {{/link-to}}
     {{/active-tag}}
+
     {{#active-tag path="customers"}}
       {{#link-to "customers"}}
-        <i class="icon icon-home"></i>
-        <span class="menu-text">
-          Customers
-        </span>
+        <span class="menu-text"> Customers </span>
       {{/link-to}}
     {{/active-tag}}
+
     {{#active-tag path="vehicles"}}
       {{#link-to "vehicles"}}
-        <i class="icon icon-home"></i>
-        <span class="menu-text">
-          Vehicles
-        </span>
+        <span class="menu-text"> Vehicles </span>
       {{/link-to}}
     {{/active-tag}}
   </ul>

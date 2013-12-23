@@ -4,6 +4,8 @@ Ember.Handlebars.registerHelper('active-tag', function(name) {
     params = [].slice.call(arguments, 0, -1),
     hash = options.hash;
 
+  debugger
+
   hash.parameters = {
     context: this,
     options: options,
