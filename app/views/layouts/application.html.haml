@@ -1,0 +1,17 @@
+!!!
+%html
+  %head
+    %title RAP-Example
+    %meta{ charset: 'utf-8' }
+    %meta{ name: 'viewport', content: 'width=device-width, initial-scale=1.0' }
+    = csrf_meta_tags 
+    = javascript_include_tag('//maps.google.com/maps/api/js?v=3.2&sensor=false')
+    = stylesheet_link_tag('bootstrap', :media => 'all')
+    = stylesheet_link_tag('theme', :media => 'all')
+    = stylesheet_link_tag('application', :media => 'all')
+    = javascript_include_tag('application')
+
+    = yield :html_head
+
+  %body{ class: 'application' }
+    = yield
