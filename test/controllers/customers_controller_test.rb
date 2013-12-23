@@ -5,7 +5,7 @@ class CustomersControllerTest < ActionController::TestCase
   def test_show
     customer = a Customer
 
-    get :show,
+    get :show, :format => :json, 
       id: customer.id
     
     assert_response :success
@@ -15,7 +15,7 @@ class CustomersControllerTest < ActionController::TestCase
     customer = a Customer
     customer.update_attributes(name: 'Example')
 
-    get :show,
+    get :show, :format => :json, 
       id: customer.id
 
     assert_response :success
@@ -25,7 +25,7 @@ class CustomersControllerTest < ActionController::TestCase
   def test_index
     customers = 5.of { a Customer }
 
-    get :index
+    get :index, :format => :json, 
 
     assert_response :success
 
@@ -37,7 +37,7 @@ class CustomersControllerTest < ActionController::TestCase
   end
 
   def test_create
-    post :create,
+    post :create, :format => :json, 
         customer: {
            name: 'Foo'
         }
@@ -57,7 +57,7 @@ class CustomersControllerTest < ActionController::TestCase
       name: old_name
     )
 
-    patch :update,
+    patch :update, :format => :json, 
       id: customer.id,
         customer: {
         name: new_name

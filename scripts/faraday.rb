@@ -57,7 +57,10 @@ end
 
 def index (conn, type)
   response = conn.get type.pluralize(2)
-  return response.body
+  case type
+    when 'customer' then return response.body.customers
+    when 'vehicle' then return response.body.vehicles
+  end
 end
 
 puts "------ Customers Index ------ "

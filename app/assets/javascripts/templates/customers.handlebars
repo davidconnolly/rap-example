@@ -1,7 +1,12 @@
-Customers:
+Customers;
 
 <ul>
   {{#each customer in model}}
     <li>{{customer.name}}</li>
+    <ul>
+      {{#each vehicle in customer.vehicles}}
+        <li>{{vehicle.year}} {{vehicle.make}}</li>
+      {{/each}}
+    </ul>
   {{/each}}
 </ul>

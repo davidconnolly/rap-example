@@ -5,9 +5,9 @@ class VehiclesControllerTest < ActionController::TestCase
   def test_show
     vehicle = a Vehicle
 
-    get :show,
+    get :show, :format => :json, 
       id: vehicle.id
-    
+
     assert_response :success
   end
 
@@ -15,7 +15,7 @@ class VehiclesControllerTest < ActionController::TestCase
     vehicle = a Vehicle
     vehicle.update_attributes(make: 'Example')
 
-    get :show,
+    get :show, :format => :json, 
       id: vehicle.id
 
     assert_response :success
@@ -25,7 +25,7 @@ class VehiclesControllerTest < ActionController::TestCase
   def test_index
     vehicles = 5.of { a Vehicle }
 
-    get :index
+    get :index, :format => :json, 
 
     assert_response :success
 
@@ -39,7 +39,7 @@ class VehiclesControllerTest < ActionController::TestCase
   def test_create
     customer = a Customer
 
-    post :create,
+    post :create, :format => :json, 
         vehicle: {
           make: 'Foo',
           year: 1980,
@@ -64,7 +64,7 @@ class VehiclesControllerTest < ActionController::TestCase
       customer: customer
     )
     
-    patch :update,
+    patch :update, :format => :json, 
       id: vehicle.id,
         vehicle: {
         make: new_make
