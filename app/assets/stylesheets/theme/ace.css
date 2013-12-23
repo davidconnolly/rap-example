@@ -33,7 +33,7 @@ body.breadcrumbs-fixed {
   width: 100%;
   z-index: -2;
 }
-@media (min-width: 768px) {
+@media (min-width: 2px) {
   .container.main-container:after {
     -webkit-box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
     box-shadow: 0 0 0 1px rgba(0,0,0,0.1);
@@ -1384,13 +1384,13 @@ blockquote.pull-right {
   text-align: center;
 }
 /* ace-nav responsive */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .navbar-container {
     padding-left: 0;
     padding-right: 0;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .ace-nav > li:nth-last-child(4) > .dropdown-menu.pull-right {
     right: -80px;
   }
@@ -1409,7 +1409,7 @@ blockquote.pull-right {
     right: 0 !important;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .ace-nav > li:nth-last-child(4) > .dropdown-menu.pull-right {
     right: -120px;
   }
@@ -1612,7 +1612,7 @@ blockquote.pull-right {
   position: relative;
   top: 2px;
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 1px) {
   .breadcrumb {
     margin-left: 90px;
   }
@@ -1628,7 +1628,7 @@ blockquote.pull-right {
     top: 50px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .breadcrumb > li > a {
     padding: 0 1px;
   }
@@ -1642,7 +1642,7 @@ blockquote.pull-right {
   left: auto !important;
   right: auto !important;
 }
-@media (min-width: 768px) {
+@media (min-width: 2px) {
   .container.main-container .breadcrumbs.breadcrumbs-fixed {
     width: 554px;
   }
@@ -1650,7 +1650,7 @@ blockquote.pull-right {
     width: 701px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 3px) {
   .container.main-container .breadcrumbs.breadcrumbs-fixed {
     width: 774px;
   }
@@ -1658,7 +1658,7 @@ blockquote.pull-right {
     width: 921px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 4px) {
   .container.main-container .breadcrumbs.breadcrumbs-fixed {
     width: 974px;
   }
@@ -1811,7 +1811,7 @@ blockquote.pull-right {
 }
 */
 /* responsive searchbox */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .nav-search {
     right: 5px;
   }
@@ -1826,7 +1826,7 @@ blockquote.pull-right {
     width: 145px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .nav-search .nav-search-input {
     width: 0;
     opacity: 0;
@@ -1884,7 +1884,7 @@ blockquote.pull-right {
 .sidebar.sidebar-fixed {
   position: fixed;
   z-index: 1029;
-  top: 45px;
+  top: 55px;
   left: 0;
 }
 .sidebar.fixed:before,
@@ -2558,7 +2558,7 @@ li [class*=" icon-"],
   display: none;
 }
 /* responsive sidebar */
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 2px) {
   .sidebar:before {
     display: none;
   }
@@ -6124,7 +6124,7 @@ input[type=checkbox].ace.ace-switch.ace-switch-7:checked + .lbl::after {
   color: #848484 !important;
   background-color: #eeeeee !important;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .help-inline,
   .input-icon + .help-inline {
     padding-left: 0;
@@ -6935,7 +6935,7 @@ td .lbl:only-child {
   margin: 3px 0;
   border-bottom: 1px solid #CCC;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .widget-box {
     margin-top: 7px;
     margin-bottom: 7px;
@@ -8560,7 +8560,7 @@ td .lbl:only-child {
   text-align: center;
   padding-left: 0;
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 2px) {
   .pricing-box {
     margin: 0;
     margin-bottom: 16px;
@@ -8656,7 +8656,7 @@ td .lbl:only-child {
     padding-right: 0;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .pricing-span-header,
   .pricing-span-body {
     width: 100%;
@@ -8815,12 +8815,12 @@ td .lbl:only-child {
   margin: 0;
 }
 /* loginbox */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .login-layout .widget-box .widget-main {
     padding: 16px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .login-container {
     width: 98%;
   }
@@ -8831,7 +8831,7 @@ td .lbl:only-child {
     width: auto;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .login-layout .widget-box.visible {
     -webkit-transition: none;
     transition: none;
@@ -9010,7 +9010,7 @@ td .lbl:only-child {
   filter: alpha(opacity=100);
 }
 /* gallery */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .ace-thumbnails {
     text-align: center;
   }
@@ -9295,7 +9295,7 @@ li.item-default {
 .ui-sortable-helper > a {
   cursor: move !important;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .itemdiv.memberdiv {
     float: none;
     width: auto;
@@ -9577,7 +9577,7 @@ li.item-default {
   background-color: #FFF;
 }
 /** profile **/
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .profile-info-name {
     width: 80px;
   }
@@ -9594,7 +9594,7 @@ li.item-default {
     margin-left: 10px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .user-profile .memberdiv {
     width: 50%;
     margin-left: 0;
@@ -9881,7 +9881,7 @@ li.item-default {
   display: inline-block;
   min-height: 28px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .message-bar {
     display: block;
     min-height: 60px;
@@ -10047,7 +10047,7 @@ ul.attachment-list > li {
   border-top: none;
   padding-top: 22px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .message-form {
     padding-left: 16px;
     padding-right: 16px;
@@ -10089,7 +10089,7 @@ ul.attachment-list > li {
 .message-condensed .message-navbar .nav-search {
   bottom: 7px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .message-condensed .message-bar {
     min-height: 42px;
   }
@@ -10097,7 +10097,7 @@ ul.attachment-list > li {
 .inbox-folders .btn-block {
   margin-top: 0;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .inbox-folders.inbox-folders-responsive .btn-block {
     width: 24%;
   }
@@ -10497,7 +10497,7 @@ ul.attachment-list > li {
   line-height: 36px;
 }
 /* calendar */
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .fc-header td {
     display: block;
     width: auto;
@@ -11198,7 +11198,7 @@ ul.attachment-list > li {
 .wizard-actions {
   text-align: right;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .wizard-steps li .step {
     width: 30px;
     height: 30px;
@@ -11534,14 +11534,14 @@ ul.attachment-list > li {
   right: 33%;
   top: 33%;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .gritter-center {
     left: 16%;
     right: 16%;
     top: 30%;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .gritter-center {
     left: 30px;
     right: 30px;
@@ -13948,19 +13948,19 @@ th[aria-selected=true] .ui-jqgrid-sortable {
   bottom: 2px;
   z-index: 11;
 }
-@media (min-width: 768px) {
+@media (min-width: 2px) {
   .main-container.container > .btn-scroll-up {
     right: auto;
     margin-left: 708px;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 3px) {
   .main-container.container > .btn-scroll-up {
     right: auto;
     margin-left: 928px;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 4px) {
   .main-container.container > .btn-scroll-up {
     right: auto;
     margin-left: 1128px;
@@ -14206,7 +14206,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
   padding-right: 0;
   float: none;
 }
-@media (min-width: 768px) {
+@media (min-width: 2px) {
   .col-sm-reset {
     width: auto;
     padding-left: 0;
@@ -14214,7 +14214,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
     float: none;
   }
 }
-@media (min-width: 992px) {
+@media (min-width: 3px) {
   .col-md-reset {
     width: auto;
     padding-left: 0;
@@ -14222,7 +14222,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
     float: none;
   }
 }
-@media (min-width: 1200px) {
+@media (min-width: 4px) {
   .col-lg-reset {
     width: auto;
     padding-left: 0;
@@ -14243,7 +14243,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
   height: 20px;
   font-size: 10px;
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .hidden-480 {
     display: none !important;
   }
@@ -14253,38 +14253,38 @@ th[aria-selected=true] .ui-jqgrid-sortable {
     display: none !important;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   [class*="vspace-xs"] {
     display: block;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   [class*="vspace-sm"] {
     display: block;
   }
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 2px) {
   [class*="vspace-md"] {
     display: block;
   }
 }
-@media only screen and (max-width: 1199px) {
+@media only screen and (max-width: 3px) {
   [class*="vspace-lg"] {
     display: block;
   }
 }
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 2px) {
   .main-content {
     margin-left: 0 !important;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .page-content {
     padding-left: 12px;
     padding-right: 12px;
   }
 }
-@media (max-width: 991px) {
+@media (max-width: 2px) {
   body.breadcrumbs-fixed {
     padding-top: 45px;
   }
@@ -14301,12 +14301,12 @@ th[aria-selected=true] .ui-jqgrid-sortable {
     padding-top: 90px;
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 1px) {
   .error-container {
     margin: 12px;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 2px) {
   .error-container {
     margin: 6px;
   }
@@ -14341,7 +14341,7 @@ th[aria-selected=true] .ui-jqgrid-sortable {
     border-bottom: none;
   }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 1px) {
   .ace-settings-container,
   body.breadcrumbs-fixed .ace-settings-container {
     top: 65px;

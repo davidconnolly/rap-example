@@ -31,6 +31,12 @@ gem 'jbuilder', '~> 1.2'
 # Ember
 gem 'ember-rails'
 
+# Bootstrap
+gem 'twitter-bootstrap-rails'
+
+# Font Awesome (for icons)
+gem "font-awesome-rails"
+
 # Haml
 gem 'haml'
 
@@ -38,7 +44,7 @@ gem 'haml'
 gem 'faker'
 
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
+  # bundle exec ` doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
