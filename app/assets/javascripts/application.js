@@ -21,4 +21,7 @@
 // For more details see: http://emberjs.com/guides/application/
 window.RapExample = Ember.Application.create({
  LOG_TRANSITIONS: true // basic logging of successful transitions
-})
+});
+
+//Experimental feature
+Ember.FEATURES['query-params'] = true;
