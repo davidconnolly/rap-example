@@ -31,6 +31,9 @@ gem 'jbuilder', '~> 1.2'
 # Ember
 gem 'ember-rails'
 
+# Haml
+gem 'haml'
+
 # Fake data
 gem 'faker'
 

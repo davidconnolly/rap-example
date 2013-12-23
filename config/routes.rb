@@ -5,7 +5,7 @@ RapExample::Application.routes.draw do
   resources :customers
   resources :vehicles
 
-  root "ember#start"
+  root to: 'ember#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

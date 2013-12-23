@@ -1,4 +1,4 @@
 class EmberController < ApplicationController
-  def start
+  def index
   end
 end

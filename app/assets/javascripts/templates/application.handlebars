@@ -1,9 +1,34 @@
-<body id="body">
-  {{#link-to "index"}}Index{{/link-to}}
-  {{#link-to "customers"}}Customers{{/link-to}}
-  {{#link-to "vehicles"}}Vehicles{{/link-to}}
-</body>
+<div class="sidebar sidebar-fixed" {{bind-attr class="menuMini:menu-min"}} id="sidebar">
+  <ul class="nav nav-list">
+    {{#active-tag path="index"}}
+      {{#link-to "index"}}
+        <i class="icon icon-home"></i>
+        <span class="menu-text">
+          Index
+        </span>
+      {{/link-to}}
+    {{/active-tag}}
+    {{#active-tag path="customers"}}
+      {{#link-to "customers"}}
+        <i class="icon icon-home"></i>
+        <span class="menu-text">
+          Customers
+        </span>
+      {{/link-to}}
+    {{/active-tag}}
+    {{#active-tag path="vehicles"}}
+      {{#link-to "vehicles"}}
+        <i class="icon icon-home"></i>
+        <span class="menu-text">
+          Vehicles
+        </span>
+      {{/link-to}}
+    {{/active-tag}}
+  </ul>
+</div>
 
-<div id="content">
-  {{outlet}}
+<div class="main-content" {{bind-attr class="menuMini:menu-min"}}>
+  <div class="page-content" style="padding-top: 90px">
+    {{outlet}}
+  </div>
 </div>
