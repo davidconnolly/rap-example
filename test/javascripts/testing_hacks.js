@@ -1,0 +1,1 @@
+window.isPhantomJS = true;

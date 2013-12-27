@@ -1,3 +1,4 @@
+require_relative '../json_schema'
 require_relative '../test_helper'
 
 class VehiclesControllerTest < ActionController::TestCase
@@ -25,15 +26,16 @@ class VehiclesControllerTest < ActionController::TestCase
   def test_index
     vehicles = 5.of { a Vehicle }
 
-    get :index, :format => :json, 
+    get :index, :format => :json 
 
     assert_response :success
 
     response = parse_json_response
 
-    assert_instance_of Array, response
-    assert_equal vehicles.length, response.length
-    assert_equal vehicles.first.id, response.first['id']
+    assert_instance_of Hash, response
+    assert JSON::Validator.validate(VEHICLES_INDEX_SCHEMA, response)
+    assert_equal 1, response.length
+    assert_equal 5, response['vehicles'].length
   end
 
   def test_create

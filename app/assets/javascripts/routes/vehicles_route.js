@@ -1,9 +1,5 @@
 RapExample.VehiclesRoute = Ember.Route.extend({
-  model: function() {
+  model: function(params) {
     return this.store.find('vehicle');
-  },
-  setupController: function(controller, model) {
-    window.mv = model
-    controller.set('model', model);
   }
 });

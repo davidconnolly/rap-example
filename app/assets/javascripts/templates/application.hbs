@@ -16,16 +16,19 @@
         <ul class="nav nav-list">
           {{#active-tag path="index"}}
             {{#link-to "index"}}
+              <i class="fa fa-home"></i>
               <span class="menu-text"> Index </span>
             {{/link-to}}
           {{/active-tag}}
-          {{#active-tag path="customers, customers.index"}}
+          {{#active-tag path="customers,customers.index"}}
             {{#link-to "customers"}}
+              <i class="fa fa-male"></i>
               <span class="menu-text"> Customers </span>
             {{/link-to}}
           {{/active-tag}}
-          {{#active-tag path="vehicles, vehicles.index"}}
+          {{#active-tag path="vehicles,vehicles.index"}}
             {{#link-to "vehicles"}}
+              <i class="fa fa-truck"></i>
               <span class="menu-text"> Vehicles </span>
             {{/link-to}}
           {{/active-tag}}

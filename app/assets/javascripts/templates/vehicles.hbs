@@ -1,7 +1,12 @@
-Vehicles:
+<div class="page-header">
+  <h1>Vehicles</h1>
+</div>
 
-<ul>
-  {{#each vehicle in model}}
-    <li>{{vehicle.year}} {{vehicle.make}} belongs to {{vehicle.customer.name}}</li>
-  {{/each}}
-</ul>
+{{#each}}
+  <div class="row">
+    <h3>
+      <i class="fa fa-truck"></i>
+      {{year}} {{make}} belonging to {{customer.name}}
+    </h3>
+  </div>
+{{/each}}

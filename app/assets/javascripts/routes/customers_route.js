@@ -1,9 +1,5 @@
 RapExample.CustomersRoute = Ember.Route.extend({
-  model: function() {
+  model: function(params) {
     return this.store.find('customer');
-  },
-  setupController: function(controller, model) {
-    window.mc = model
-    controller.set('model', model);
   }
 });

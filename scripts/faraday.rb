@@ -1,7 +1,6 @@
 require 'faraday'
 require 'faraday_middleware'
 require 'active_support/core_ext/string/inflections.rb'
-require './json_schema.rb'
 
 conn = Faraday.new(:url => 'http://0.0.0.0:3000') do |faraday|
   faraday.response :rashify
@@ -14,26 +13,11 @@ end
 
 def create (conn, type, params)
   valid = false
-  schema =
-    case type
-      when 'customer' then $customer_schema
-      when 'vehicle' then $vehicle_schema
-    end
-  
-  begin
-    valid = JSON::Validator.validate!(schema, params)
-  rescue JSON::Schema::ValidationError
-    puts $!.message
-  end
-  
-  if valid
-    conn.post do |req|
-      req.url '/'+ type.pluralize(2)
-      req.headers['Content-Type'] = 'application/json'
-      req.body = params
-    end
-  else
-    puts type + " not created due to invalid JSON Schema"
+
+  conn.post do |req|
+    req.url '/'+ type.pluralize(2)
+    req.headers['Content-Type'] = 'application/json'
+    req.body = params
   end
 end
 
@@ -73,11 +57,11 @@ end
 
 puts "------ Create Customsers ------ "
 to_delete = create(conn, 'customer', { name: "Foo" }).body.id
-puts "Created Customer id " + get(conn, 'customers', to_delete).id.to_s + " with name: " + get(conn, 'customers', to_delete).name
+puts "Created Customer id " + get(conn, 'customers', to_delete)['customers'].id.to_s + " with name: " + get(conn, 'customers', to_delete)['customers'].name
 
 puts "------ Update Customsers ------ "
 update(conn, 'customer', to_delete, { name: "Foo New" })
-puts "Updated Customer with id " + get(conn, 'customers', to_delete).id.to_s + " to name: " + get(conn, 'customers', to_delete).name
+puts "Updated Customer with id " + get(conn, 'customers', to_delete)['customers'].id.to_s + " to name: " + get(conn, 'customers', to_delete)['customers'].name
 
 puts "------ Delete Customsers ------ "
 destroy(conn, 'customers', to_delete)
@@ -87,7 +71,7 @@ puts "------ Vehicles Index------ "
 i = 0
 response = index(conn, 'vehicle')
 while i < response.size  do
-   puts("Vehicle " + response[i].id.to_s + " is a " + response[i].year.to_s + " " + response[i].make + " belonging to " + get(conn, 'customers', i+1).name)
+   puts("Vehicle " + response[i].id.to_s + " is a " + response[i].year.to_s + " " + response[i].make + " belonging to " + get(conn, 'customers', response[i].customer)['customers'].name)
    i +=1
 end
 

@@ -61,6 +61,10 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'teaspoon'
   gem 'test_dummy'
   gem 'rash'
+  gem 'faraday'
+  gem 'faraday_middleware'
+  gem 'json-schema'
 end

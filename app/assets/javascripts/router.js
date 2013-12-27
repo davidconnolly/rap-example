@@ -1,6 +1,13 @@
-// For more information see: http://emberjs.com/guides/routing/
-
 RapExample.Router.map(function() {
-  this.resource('customers');
-  this.resource('vehicles');
-});
+    // this.resource('customers', function() {
+    //   this.resource('customer', { path: '/:id' });
+    // });
+    this.resource('customers', function() {
+      this.resource('customer', { path: ':id' });  
+    });
+
+    this.resource('vehicles', function() {
+      this.resource('vehicle', { path: ':id' });
+    });
+
+  });
