@@ -232,3 +232,8 @@ h4, h5, h6 {
   font-weight: normal;
   margin-right: 2px;
 }
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  vertical-align: middle;
+}
