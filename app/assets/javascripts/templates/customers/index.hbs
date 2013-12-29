@@ -2,13 +2,13 @@
   <h1>Customers</h1>
 </div>
 
-{{#each}}
+{{#each customer in customers}}
   <div class="row">
     <div class="widget-box no-border">
       <div class="widget-header widget-header-large">
         <h3>
           <i class="fa fa-male"></i>
-          {{name}}
+          {{customer.name}}
         </h3>
         <div class="widget-toolbar no-border">
           {{#link-to "vehicles" classNames="btn btn-sm btn-primary"}}
@@ -27,7 +27,7 @@
           </tr>
         </thead>
         <tbody>
-          {{#each vehicle in vehicles}}
+          {{#each vehicle in customer.vehicles}}
             <tr>
               <td class="center">{{vehicle.id}}</td>
               <td>{{vehicle.year}}</td>

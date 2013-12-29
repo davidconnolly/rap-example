@@ -12,22 +12,13 @@
 //   });
 // });
 
-// RapExample.Router.map(function() {
-
-//   this.resource('customers', function() {
-//     this.route('index', { path: '/'});
-//   });
-
-//   this.resource('vehicles', function() {
-//     this.route('index', { path: '/'});
-//   });
-// });
-
 RapExample.Router.map(function() {
 
   this.resource('customers', function() {
     this.route('index', { path: '/'});
   });
   
-  this.resource('vehicles');
+  this.resource('vehicles', function() {
+    this.route('index', { path: '/'});
+  });
 });
