@@ -20,5 +20,6 @@ RapExample.Router.map(function() {
   
   this.resource('vehicles', function() {
     this.route('index', { path: '/'});
+    this.route('new');
   });
 });

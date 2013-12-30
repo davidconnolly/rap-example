@@ -1,5 +1,3 @@
-json.key_format! camelize: :lower
-
 json.customers do |json|
   json.array! @customers do |customer|
     json.id customer.id

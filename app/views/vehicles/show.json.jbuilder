@@ -1,5 +1,3 @@
-json.key_format! camelize: :lower
-
 json.vehicles do
   json.id @vehicle.id
   json.make @vehicle.make

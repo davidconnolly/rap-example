@@ -1,0 +1,17 @@
+{{#form-for controller wrapper="twitter-bootstrap"}}
+  {{#with vehicle}}
+  <div class="row">
+    <div class="col-md-6">
+      {{input make}}
+      {{input year}}
+      {{input customer as="select" collection="controller.customers" optionLabelPath="content.name" optionValuePath="content" value="controller.vehicleCustomerListener"}}
+    </div>
+  </div>
+  {{/with}}
+  <div class="form-actions">
+    <button class="btn btn-primary" {{action 'submit'}}>
+      <i class="fa fa-check"></i>
+      Submit
+    </button>
+  </div>  
+{{/form-for}}

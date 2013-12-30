@@ -45,14 +45,15 @@ class VehiclesControllerTest < ActionController::TestCase
         vehicle: {
           make: 'Foo',
           year: 1980,
-          customer_id: customer.id
+          customer: customer.id
         }
 
     assert_response :success
 
     response = parse_json_response
+    puts response
 
-    assert response['make']
+    assert response['vehicle']
   end
 
   def test_update

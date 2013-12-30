@@ -11,6 +11,7 @@ class VehiclesController < ApplicationController
   end
 
   def create
+    puts @vehicle
     @vehicle.save!
 
   #rescue ActiveRecord::RecordInvalid
@@ -48,7 +49,7 @@ private
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:make, :year, :customer_id)
+    params.require(:vehicle).permit(:make, :year, :customer)
   end 
 
 end

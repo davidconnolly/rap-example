@@ -1,1 +1,6 @@
-json.(@vehicle, :id, :year, :make, :customer_id, :created_at, :updated_at)
+json.vehicles do
+  json.id @vehicle.id
+  json.make @vehicle.make
+  json.year @vehicle.year
+  json.customer @vehicle.customer
+end

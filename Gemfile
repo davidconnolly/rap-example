@@ -40,9 +40,6 @@ gem "font-awesome-rails"
 # Haml
 gem 'haml'
 
-# Fake data
-gem 'faker'
-
 group :doc do
   # bundle exec ` doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -61,6 +58,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'faker'
   gem 'teaspoon'
   gem 'test_dummy'
   gem 'rash'
