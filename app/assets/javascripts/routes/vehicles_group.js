@@ -27,7 +27,6 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
       controller.set('vehicleCustomerListener', objects[0].get('lastObject'))
     });
 
-    // How do I speciy params in link-to????
     if (params.customer_id) {
       var customer = this.store.find('customer', params.customer_id);
 
