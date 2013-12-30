@@ -33,9 +33,7 @@
               <td>{{vehicle.year}}</td>
               <td>{{vehicle.make}}</td>
               <td class="center">
-                  {{#link-to "vehicles" classNames="btn btn-sm"}}
-                    <i class="fa fa-times"></i>
-                  {{/link-to}}
+                  <a href="#" class="btn btn-sm" {{action 'deleteVehicle' vehicle}}><i class="fa fa-times"></i></a>
               </td>
             </tr>
           {{/each}}

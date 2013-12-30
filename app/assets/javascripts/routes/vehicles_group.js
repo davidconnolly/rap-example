@@ -17,7 +17,7 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
   model: function (params) {
     return this.store.createRecord('vehicle');
   },
-  setupController: function (controller, model) {
+  setupController: function (controller, model, params) {
     var promises = [ ];
     var customers = this.store.find('customer');
     promises.push(customers);
@@ -26,6 +26,20 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
       controller.set('customers', objects[0]);
       controller.set('vehicleCustomerListener', objects[0].get('lastObject'))
     });
+
+    // How do I speciy params in link-to????
+    if (params.customer_id) {
+      var customer = this.store.find('customer', params.customer_id);
+
+      customer.then(
+        function (object) {
+          controller.set('vehicleCustomerListener', object);
+        },
+        function () {
+          //customer is not found
+        }
+      );
+    }
 
     controller.set('vehicle', model);
   }

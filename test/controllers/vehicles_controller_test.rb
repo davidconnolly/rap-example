@@ -51,9 +51,8 @@ class VehiclesControllerTest < ActionController::TestCase
     assert_response :success
 
     response = parse_json_response
-    puts response
 
-    assert response['vehicle']
+    assert response['vehicles']
   end
 
   def test_update

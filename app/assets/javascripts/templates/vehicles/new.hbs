@@ -2,8 +2,8 @@
   {{#with vehicle}}
   <div class="row">
     <div class="col-md-6">
-      {{input make}}
       {{input year}}
+      {{input make}}
       {{input customer as="select" collection="controller.customers" optionLabelPath="content.name" optionValuePath="content" value="controller.vehicleCustomerListener"}}
     </div>
   </div>

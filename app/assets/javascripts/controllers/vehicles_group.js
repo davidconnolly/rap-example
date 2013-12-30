@@ -26,7 +26,7 @@ RapExample.VehiclesNewController = Ember.Controller.extend({
 
       vehicle.save()
         .then(function (object) {
-          _this.transitionToRoute('vehicle.show', object);
+          _this.transitionToRoute('customers');
         })
         .catch(function (error) {
           vehicle.rollback();

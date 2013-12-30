@@ -11,11 +11,10 @@ class VehiclesController < ApplicationController
   end
 
   def create
-    puts @vehicle
     @vehicle.save!
 
-  #rescue ActiveRecord::RecordInvalid
-  #  render_api_error('Invalid vehicle', @vehicle.errors)
+    # rescue ActiveRecord::RecordInvalid
+    #   render_api_error('Invalid vehicle', @vehicle.errors)
   end
 
   def show
@@ -49,7 +48,10 @@ private
   end
 
   def vehicle_params
-    params.require(:vehicle).permit(:make, :year, :customer)
+    _params = params.require(:vehicle).permit(:make, :year, :customer)
+    if (_params[:customer])
+      _params[:customer_id] = _params.delete(:customer)
+    end
+    _params
   end 
-
 end

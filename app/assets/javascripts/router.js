@@ -2,16 +2,6 @@
 //   location: 'history'
 // });
 
-// RapExample.Router.map(function() {
-//   this.resource('customers', function() {
-//     this.resource('customer', { path: ':id' });
-//   });
-
-//   this.resource('vehicles', function() {
-//     this.resource('vehicle', { path: ':id' });
-//   });
-// });
-
 RapExample.Router.map(function() {
 
   this.resource('customers', function() {
@@ -20,6 +10,6 @@ RapExample.Router.map(function() {
   
   this.resource('vehicles', function() {
     this.route('index', { path: '/'});
-    this.route('new');
+    this.route('new', { path: '/new', queryParams: ['customer_id'] });
   });
 });
