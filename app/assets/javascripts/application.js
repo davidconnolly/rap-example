@@ -31,3 +31,15 @@ window.RapExample = Ember.Application.create({
 
 //Experimental feature
 Ember.FEATURES['query-params'] = true;
+
+var errorReceiver = function (error) {
+  if (RapImsGon.is_development_mode) {
+    console.log(error);
+    if (!window.isPhantomJS) {
+      alert(error);
+    }
+  }
+};
+
+Ember.onerror = errorReceiver;
+Ember.RSVP.configure('onerror', errorReceiver);

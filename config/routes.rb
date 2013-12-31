@@ -2,8 +2,10 @@ RapExample::Application.routes.draw do
   get "ember/start"
   #get "customers/new"
 
-  resources :customers
-  resources :vehicles
+  resources :customers,
+    defaults: { format: 'json' }
+  resources :vehicles,
+    defaults: { format: 'json' }
 
   root to: 'ember#index'
 

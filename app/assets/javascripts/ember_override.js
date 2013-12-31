@@ -9,3 +9,15 @@ Ember.EasyForm.Config.registerWrapper('twitter-bootstrap', {
   wrapControls: true,
   controlsWrapperClass: 'controls'
 });
+
+var errorReceiver = function (error) {
+  if (RapImsGon.is_development_mode) {
+    console.log(error);
+    if (!window.isPhantomJS) {
+      alert(error);
+    }
+  }
+};
+
+Ember.onerror = errorReceiver;
+Ember.RSVP.configure('onerror', errorReceiver);

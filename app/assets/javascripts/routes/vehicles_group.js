@@ -18,28 +18,39 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
     return this.store.createRecord('vehicle');
   },
   setupController: function (controller, model, params) {
-    var promises = [ ];
-    var customers = this.store.find('customer');
-    promises.push(customers);
-
-    Ember.RSVP.all(promises).then(function(objects){
-      controller.set('customers', objects[0]);
-      controller.set('vehicleCustomerListener', objects[0].get('lastObject'))
+    var _this = this;
+    
+    controller.set('customers', undefined);
+    controller.set('vehicle', undefined);
+    controller.set('vehicleCustomerListener', undefined)
+    
+    this.store.find('customer').then(function (customers) {
+      controller.set('customers', customers);
+      controller.set('vehicle', model);
+      controller.set('vehicleCustomerListener', customers.get('lastObject'));
+      
+      if (params.customer_id) {
+        var customer = _this.store.find('customer', params.customer_id);
+        customer.then(
+          function (object) {
+            controller.set('vehicleCustomerListener', object);
+          },
+          function () {
+            //customer is not found
+          }
+        );
+      }
     });
-
-    if (params.customer_id) {
-      var customer = this.store.find('customer', params.customer_id);
-
-      customer.then(
-        function (object) {
-          controller.set('vehicleCustomerListener', object);
-        },
-        function () {
-          //customer is not found
-        }
-      );
+  },
+  
+  actions:{
+    willTransition: function (transition) {
+      var vehicle = this.modelFor('vehicles.new');
+      if (vehicle.get('isDirty')) {
+        vehicle.deleteRecord();
+      }
+      return true;
     }
-
-    controller.set('vehicle', model);
   }
 });
+
