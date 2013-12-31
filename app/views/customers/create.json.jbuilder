@@ -1,1 +1,5 @@
-json.(@customer, :id, :name, :created_at, :updated_at)
+json.customers do |json|
+  json.id @customer.id
+  json.name @customer.name
+  json.vehicles (@customer.vehicles.collect(&:id))
+end

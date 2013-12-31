@@ -1,4 +1,4 @@
-class VehiclesController < ApplicationController
+class VehiclesController < BaseController
   before_action :build_vehicle, only: [ :new, :create ]
   before_action :load_vehicle, except: [ :index, :new, :create ]
   respond_to :json
@@ -13,8 +13,8 @@ class VehiclesController < ApplicationController
   def create
     @vehicle.save!
 
-    # rescue ActiveRecord::RecordInvalid
-    #   render_api_error('Invalid vehicle', @vehicle.errors)
+   rescue ActiveRecord::RecordInvalid
+     render_api_error('Invalid vehicle', @vehicle.errors)
   end
 
   def show

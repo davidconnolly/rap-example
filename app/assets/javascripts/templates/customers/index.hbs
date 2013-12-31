@@ -1,5 +1,10 @@
 <div class="page-header">
-  <h1>Customers</h1>
+  <h1>Customers
+    {{#link-to "customers.new" classNames="btn btn-sm btn-primary"}}
+      <i class="fa fa-plus"></i>
+      Add Customer
+    {{/link-to}}
+  </h1>
 </div>
 
 {{#each customer in customers}}
@@ -9,6 +14,7 @@
         <h3>
           <i class="fa fa-male"></i>
           {{customer.name}}
+          <a href="#" class="btn btn-sm" {{action 'deleteCustomer' customer}}><i class="fa fa-times"></i></a>
         </h3>
         <div class="widget-toolbar no-border">
           {{#link-to "vehicles.new" customer_idBinding="customer.id" classNames="btn btn-sm btn-primary"}}

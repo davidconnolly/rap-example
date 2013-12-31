@@ -1,4 +1,4 @@
-class CustomersController < ApplicationController
+class CustomersController < BaseController
   skip_before_action :verify_authenticity_token
   before_action :build_customer, only: [ :new, :create ]
   before_action :load_customer, except: [ :index, :new, :create ]
@@ -14,8 +14,8 @@ class CustomersController < ApplicationController
   def create
     @customer.save!
 
-  #rescue ActiveRecord::RecordInvalid
-  #  render_api_error('Invalid customer', @customer.errors)
+  rescue ActiveRecord::RecordInvalid
+    render_api_error('Invalid customer', @customer.errors)
   end
 
   def show

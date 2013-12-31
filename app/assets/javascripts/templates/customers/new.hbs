@@ -1,0 +1,15 @@
+{{#form-for controller wrapper="twitter-bootstrap"}}
+  {{#with customer}}
+  <div class="row">
+    <div class="col-md-6">
+      {{input name}}
+    </div>
+  </div>
+  {{/with}}
+  <div class="form-actions">
+    <button class="btn btn-primary" {{action 'submit'}}>
+      <i class="fa fa-check"></i>
+      Submit
+    </button>
+  </div>  
+{{/form-for}}

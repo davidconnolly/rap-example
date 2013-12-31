@@ -29,6 +29,8 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
       controller.set('vehicle', model);
       controller.set('vehicleCustomerListener', customers.get('lastObject'));
       
+      controller.set('vehicle', model);
+      
       if (params.customer_id) {
         var customer = _this.store.find('customer', params.customer_id);
         customer.then(

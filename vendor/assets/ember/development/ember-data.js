@@ -1,14 +1,13 @@
 // Fetched from channel: canary, with url http://builds.emberjs.com/canary/ember-data.js
-// Fetched on: 2013-12-20T17:18:20Z
+// Fetched on: 2013-12-31T19:53:28Z
 /*!
  * @overview  Ember Data
  * @copyright Copyright 2011-2013 Tilde Inc. and contributors.
  *            Portions Copyright 2011 LivingSocial Inc.
  * @license   Licensed under MIT license (see license.js)
+ * @version   1.0.0-beta.5+canary.e1200068
  */
 
-
- // Version: 1.0.0-beta.5+canary.058baf2d
 
 (function() {
 var define, requireModule;
@@ -63,7 +62,7 @@ var define, requireModule;
 var DS;
 if ('undefined' === typeof DS) {
   DS = Ember.Namespace.create({
-    VERSION: '1.0.0-beta.5+canary.058baf2d'
+    VERSION: '1.0.0-beta.5+canary.e1200068'
   });
 
   if ('undefined' !== typeof window) {
@@ -1361,7 +1360,7 @@ var get = Ember.get, set = Ember.set;
   A record array is an array that contains records of a certain type. The record
   array materializes records as needed when they are retrieved for the first
   time. You should not create record arrays yourself. Instead, an instance of
-  DS.RecordArray or its subclasses will be returned by your application's store
+  `DS.RecordArray` or its subclasses will be returned by your application's store
   in response to queries.
 
   @class RecordArray
@@ -1379,24 +1378,87 @@ DS.RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
   */
   type: null,
 
-  // The array of client ids backing the record array. When a
-  // record is requested from the record array, the record
-  // for the client id at the same index is materialized, if
-  // necessary, by the store.
+  /**
+    The array of client ids backing the record array. When a
+    record is requested from the record array, the record
+    for the client id at the same index is materialized, if
+    necessary, by the store.
+
+    @property content
+    @private
+    @type Ember.Array
+  */
   content: null,
 
+  /**
+    The flag to signal a `RecordArray` is currently loading data.
+
+    Example
+
+    ```javascript
+    var people = store.all(App.Person);
+    people.get('isLoaded'); // true
+    ```
+
+    @property isLoaded
+    @type Boolean
+  */
   isLoaded: false,
+  /**
+    The flag to signal a `RecordArray` is currently loading data.
+
+    Example
+
+    ```javascript
+    var people = store.all(App.Person);
+    people.get('isUpdating'); // false
+    people.update();
+    people.get('isUpdating'); // true
+    ```
+
+    @property isUpdating
+    @type Boolean
+  */
   isUpdating: false,
 
-  // The store that created this record array.
+  /**
+    The store that created this record array.
+
+    @property store
+    @private
+    @type DS.Store
+  */
   store: null,
 
+  /**
+    Retrieves an object from the content by index.
+
+    @method objectAtContent
+    @private
+    @param {Number} index
+    @return {DS.Model} record
+  */
   objectAtContent: function(index) {
     var content = get(this, 'content');
 
     return content.objectAt(index);
   },
 
+  /**
+    Used to get the latest version of all of the records in this array
+    from the adapter.
+
+    Example
+
+    ```javascript
+    var people = store.all(App.Person);
+    people.get('isUpdating'); // false
+    people.update();
+    people.get('isUpdating'); // true
+    ```
+
+    @method update
+  */
   update: function() {
     if (get(this, 'isUpdating')) { return; }
 
@@ -1406,14 +1468,44 @@ DS.RecordArray = Ember.ArrayProxy.extend(Ember.Evented, {
     store.fetchAll(type, this);
   },
 
+  /**
+    Adds a record to the `RecordArray`.
+
+    @method addRecord
+    @private
+    @param {DS.Model} record
+  */
   addRecord: function(record) {
     get(this, 'content').addObject(record);
   },
 
+  /**
+    Removes a record to the `RecordArray`.
+
+    @method removeRecord
+    @private
+    @param {DS.Model} record
+  */
   removeRecord: function(record) {
     get(this, 'content').removeObject(record);
   },
 
+  /**
+    Saves all of the records in the `RecordArray`.
+
+    Example
+
+    ```javascript
+    var messages = store.all(App.Message);
+    messages.forEach(function(message) {
+      message.set('hasBeenSeen', true);
+    });
+    messages.save();
+    ```
+
+    @method save
+    @return {DS.PromiseArray} promise
+  */
   save: function() {
     var promiseLabel = "DS: RecordArray#save " + get(this, 'type');
     var promise = Ember.RSVP.all(this.invoke("save"), promiseLabel).then(function(array) {
@@ -1509,10 +1601,10 @@ var get = Ember.get, set = Ember.set;
 var map = Ember.EnumerableUtils.map;
 
 /**
-  A ManyArray is a RecordArray that represents the contents of a has-many
+  A `ManyArray` is a `RecordArray` that represents the contents of a has-many
   relationship.
 
-  The ManyArray is instantiated lazily the first time the relationship is
+  The `ManyArray` is instantiated lazily the first time the relationship is
   requested.
 
   ### Inverses
@@ -1521,13 +1613,15 @@ var map = Ember.EnumerableUtils.map;
   an inverse. For example, imagine the following models are
   defined:
 
-      App.Post = DS.Model.extend({
-        comments: DS.hasMany('comment')
-      });
+  ```javascript
+  App.Post = DS.Model.extend({
+    comments: DS.hasMany('comment')
+  });
 
-      App.Comment = DS.Model.extend({
-        post: DS.belongsTo('post')
-      });
+  App.Comment = DS.Model.extend({
+    post: DS.belongsTo('post')
+  });
+  ```
 
   If you created a new instance of `App.Post` and added
   a `App.Comment` record to its `comments` has-many
@@ -1551,7 +1645,7 @@ DS.ManyArray = DS.RecordArray.extend({
   /**
     The property name of the relationship
 
-    @property {String}
+    @property {String} name
     @private
   */
   name: null,
@@ -1559,7 +1653,7 @@ DS.ManyArray = DS.RecordArray.extend({
   /**
     The record to which this relationship belongs.
 
-    @property {DS.Model}
+    @property {DS.Model} owner
     @private
   */
   owner: null,
@@ -1567,7 +1661,7 @@ DS.ManyArray = DS.RecordArray.extend({
   /**
     `true` if the relationship is polymorphic, `false` otherwise.
 
-    @property {Boolean}
+    @property {Boolean} isPolymorphic
     @private
   */
   isPolymorphic: false,
@@ -1580,15 +1674,24 @@ DS.ManyArray = DS.RecordArray.extend({
     Used for async `hasMany` arrays
     to keep track of when they will resolve.
 
-    @property {Ember.RSVP.Promise}
+    @property {Ember.RSVP.Promise} promise
     @private
   */
   promise: null,
 
+  /**
+    @method loadingRecordsCount
+    @param {Number} count
+    @private
+  */
   loadingRecordsCount: function(count) {
     this.loadingRecordsCount = count;
   },
 
+  /**
+    @method loadedRecord
+    @private
+  */
   loadedRecord: function() {
     this.loadingRecordsCount--;
     if (this.loadingRecordsCount === 0) {
@@ -1597,6 +1700,10 @@ DS.ManyArray = DS.RecordArray.extend({
     }
   },
 
+  /**
+    @method fetch
+    @private
+  */
   fetch: function() {
     var records = get(this, 'content'),
         store = get(this, 'store'),
@@ -1692,7 +1799,14 @@ DS.ManyArray = DS.RecordArray.extend({
     }
   },
 
-  // Create a child record within the owner
+  /**
+    Create a child record within the owner
+
+    @method createRecord
+    @private
+    @param {Object} hash
+    @return {DS.Model} record
+  */
   createRecord: function(hash) {
     var owner = get(this, 'owner'),
         store = get(owner, 'store'),
@@ -2484,7 +2598,7 @@ DS.Store = Ember.Object.extend({
     @param {Class} type
     @param {Object} query optional query
     @param {Function} filter
-    @return {DS.FilteredRecordArray}
+    @return {DS.PromiseArray}
   */
   filter: function(type, query, filter) {
     var promise;
@@ -2507,12 +2621,11 @@ DS.Store = Ember.Object.extend({
     });
 
     this.recordArrayManager.registerFilteredRecordArray(array, type, filter);
+    promise = promise || resolve(array);
 
-    if (promise) {
-      return promise.then(function() { return array; }, null, "DS: Store#filter of " + type);
-    } else {
+    return promiseArray(promise.then(function() {
       return array;
-    }
+    }, null, "DS: Store#filter of " + type));
   },
 
   /**
@@ -2748,10 +2861,13 @@ DS.Store = Ember.Object.extend({
   modelFor: function(key) {
     var factory;
 
+
     if (typeof key === 'string') {
-      factory = this.container.lookupFactory('model:' + key);
+      var normalizedKey = this.container.normalize('model:' + key);
+
+      factory = this.container.lookupFactory(normalizedKey);
       if (!factory) { throw new Ember.Error("No model was found for '" + key + "'"); }
-      factory.typeKey = key;
+      factory.typeKey = normalizedKey.split(':', 2)[1];
     } else {
       // A factory already supplied.
       factory = key;
@@ -3274,7 +3390,7 @@ function _findQuery(adapter, store, type, query, recordArray) {
       serializer = serializerForAdapter(adapter, type);
 
   return resolve(promise, "DS: Handle Adapter#findQuery of " + type).then(function(payload) {
-    payload = serializer.extract(store, type, payload, null, 'findAll');
+    payload = serializer.extract(store, type, payload, null, 'findQuery');
 
     Ember.assert("The response from a findQuery must be an Array, not " + Ember.inspect(payload), Ember.typeOf(payload) === 'array');
 
@@ -6321,7 +6437,7 @@ DS.Model.reopenClass({
 
       if (possibleRelationships.length === 0) { return null; }
 
-      Ember.assert("You defined the '" + name + "' relationship on " + this + ", but multiple possible inverse relationships of type " + this + " were found on " + inverseType + ".", possibleRelationships.length === 1);
+      Ember.assert("You defined the '" + name + "' relationship on " + this + ", but multiple possible inverse relationships of type " + this + " were found on " + inverseType + ". Look at http://emberjs.com/guides/models/defining-models/#toc_explicit-inverses for how to explicitly specify inverses", possibleRelationships.length === 1);
 
       inverseName = possibleRelationships[0].name;
       inverseKind = possibleRelationships[0].kind;
@@ -7368,8 +7484,8 @@ DS.FixtureAdapter = DS.Adapter.extend({
   /*
     @method findFixtureById
     @private
-    @param type
-    @param record
+    @param fixtures
+    @param id
   */
   findFixtureById: function(fixtures, id) {
     return Ember.A(fixtures).find(function(r) {
@@ -7530,9 +7646,10 @@ DS.RESTSerializer = DS.JSONSerializer.extend({
   */
   normalize: function(type, hash, prop) {
     this.normalizeId(hash);
-    this.normalizeUsingDeclaredMapping(type, hash);
     this.normalizeAttributes(type, hash);
     this.normalizeRelationships(type, hash);
+
+    this.normalizeUsingDeclaredMapping(type, hash);
 
     if (this.normalizeHash && this.normalizeHash[prop]) {
       this.normalizeHash[prop](hash);
@@ -7589,9 +7706,13 @@ DS.RESTSerializer = DS.JSONSerializer.extend({
     if (attrs) {
       for (key in attrs) {
         payloadKey = attrs[key];
-
-        hash[key] = hash[payloadKey];
-        delete hash[payloadKey];
+        if (payloadKey && payloadKey.key) {
+          payloadKey = payloadKey.key;
+        }
+        if (typeof payloadKey === 'string') {
+          hash[key] = hash[payloadKey];
+          delete hash[payloadKey];
+        }
       }
     }
   },
@@ -8371,7 +8492,7 @@ DS.RESTAdapter = DS.Adapter.extend({
     @param {Array<String>} ids
     @returns Promise
   */
-  findMany: function(store, type, ids, owner) {
+  findMany: function(store, type, ids) {
     return this.ajax(this.buildURL(type.typeKey), 'GET', { data: { ids: ids } });
   },
 
