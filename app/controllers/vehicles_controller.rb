@@ -48,7 +48,7 @@ private
   end
 
   def vehicle_params
-    _params = params.require(:vehicle).permit(:make, :year, :customer)
+    _params = params.require(:vehicle).permit(:make, :year, :customer, :customer_id)
     if (_params[:customer])
       _params[:customer_id] = _params.delete(:customer)
     end

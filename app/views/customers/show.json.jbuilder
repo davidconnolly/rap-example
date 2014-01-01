@@ -1,5 +1,3 @@
-json.customers do |json|
-  json.id @customer.id
-  json.name @customer.name
-  json.vehicles (@customer.vehicles.collect(&:id))
+json.set! :customer do
+  json.partial! 'customer', customer: @customer
 end
