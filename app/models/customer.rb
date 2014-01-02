@@ -8,7 +8,7 @@ class Customer < ActiveRecord::Base
   # == Relationships ========================================================
   
   has_many :invoices
-  has_many :vehicles
+  has_many :vehicles, :dependent => :delete_all
   has_many :estimates
 
   # == Validations ==========================================================

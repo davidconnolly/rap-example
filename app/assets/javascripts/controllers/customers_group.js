@@ -15,7 +15,7 @@ RapExample.CustomersIndexController = Ember.Controller.extend({
     },
     deleteCustomer: function (customer) {
       var _this = this;
-
+      
       customer.deleteRecord();
 
       customer.save()

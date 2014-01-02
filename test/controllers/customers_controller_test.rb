@@ -48,7 +48,7 @@ class CustomersControllerTest < ActionController::TestCase
 
     response = parse_json_response
 
-    assert response['name']
+    assert response['customers']
   end
 
   def test_update
