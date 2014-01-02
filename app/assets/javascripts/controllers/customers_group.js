@@ -14,15 +14,49 @@ RapExample.CustomersIndexController = Ember.Controller.extend({
         });
     },
     deleteCustomer: function (customer) {
-      var _this = this;
-      
-      customer.deleteRecord();
-
-      customer.save()
-        .then(function () { })
-        .catch(function (error) {
-          customer.rollback();
+      var _this = this;      
+      vehicles = customer.get('vehicles').then(function (object){
+        customer.deleteRecord().save().then(function (object) {
+          console.log(vehicles.toString())
+          vehicles.forEach(function(vehicle){
+            console.log(vehicle.get('id'));
+          });
         });
+      });
+                  
+      // var promises = {
+      //   customer: customer.save(),
+      //   vehicles: this.store.find('vehicle')
+      // };
+
+      // Ember.RSVP.hash(promises).then(function (objects) {
+      //   console.log(objects.customer)
+      //   console.log(objects.customer.id)
+      //   console.log(vehicles.toString())
+
+      //   // console.log(objects.vehicles)
+      //   // console.log(objects.vehicles.filterBy( 'customer_id', customer.id))
+
+      //   // objects.vehicles.forEach(function(vehicle){
+      //   //   console.log(vehicle.id);
+      //   // });
+
+      // })
+      // .catch(function (error) {
+      //   customer.rollback();
+      //   console.log(error);
+      //   //vehicle.deleteRecord();
+      // });
+
+      // customer.save()
+      //   .then(function () { 
+      //     console.log(customer)
+      //     console.log(customer.id)
+      //     console.log()
+      //   })
+      //   .catch(function (error) {
+      //     customer.rollback();
+      //   });
     }
   }
 });
