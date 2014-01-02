@@ -1,1 +1,3 @@
-json.(@customer, :id, :name, :created_at, :updated_at)
+json.set! :customer do
+  json.partial! 'customer', customer: @customer
+end

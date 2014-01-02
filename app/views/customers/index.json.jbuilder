@@ -1,7 +1,5 @@
-json.customers do |json|
-  json.array! @customers do |customer|
-    json.id customer.id
-    json.name customer.name
-    json.vehicles (customer.vehicles.collect(&:id))
+json.set! :customers do
+  json.array!(@customers) do |customer|
+    json.partial! 'customer', customer: customer
   end
 end
