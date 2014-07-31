@@ -7,20 +7,20 @@ CUSTOMERS_INDEX_SCHEMA = {
   "properties" => {
     "customers" =>  {
       "type" => "array",
-      "required" => true,      
+      "required" => true,
       "items" => {
         "type" => "object",
-        "required" => true,        
-        "properties" => {          
+        "required" => true,
+        "properties" => {
           "id" => {
             "type" => "number",
             "required" => true
-          },          
+          },
           "name" => {
             "type" => "string",
             "required" => true
-          },          
-          "vehicles" => {
+          },
+          "vehicle_ids" => {
             "type" => "array",
             "required" => true,
             "items" => {
@@ -46,7 +46,7 @@ VEHICLES_INDEX_SCHEMA = {
         "type" => "object",
         "required" => true,
         "properties" => {
-          "customer" =>  {
+          "customer_id" =>  {
             "type" => "number",
             "required" => true
           },

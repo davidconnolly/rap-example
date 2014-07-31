@@ -6,9 +6,9 @@ class CustomersControllerTest < ActionController::TestCase
   def test_show
     customer = a Customer
 
-    get :show, :format => :json, 
+    get :show, :format => :json,
       id: customer.id
-    
+
     assert_response :success
   end
 
@@ -16,7 +16,7 @@ class CustomersControllerTest < ActionController::TestCase
     customer = a Customer
     customer.update_attributes(name: 'Example')
 
-    get :show, :format => :json, 
+    get :show, :format => :json,
       id: customer.id
 
     assert_response :success
@@ -33,13 +33,13 @@ class CustomersControllerTest < ActionController::TestCase
     response = parse_json_response
 
     assert_instance_of Hash, response
-    assert JSON::Validator.validate(CUSTOMERS_INDEX_SCHEMA, response)    
+    assert JSON::Validator.validate(CUSTOMERS_INDEX_SCHEMA, response)
     assert_equal 1, response.length
     assert_equal 5, response['customers'].length
   end
 
   def test_create
-    post :create, :format => :json, 
+    post :create, :format => :json,
         customer: {
            name: 'Foo'
         }
@@ -48,7 +48,7 @@ class CustomersControllerTest < ActionController::TestCase
 
     response = parse_json_response
 
-    assert response['customers']
+    assert response['customer']
   end
 
   def test_update
@@ -59,7 +59,7 @@ class CustomersControllerTest < ActionController::TestCase
       name: old_name
     )
 
-    patch :update, :format => :json, 
+    patch :update, :format => :json,
       id: customer.id,
         customer: {
         name: new_name
@@ -71,8 +71,8 @@ class CustomersControllerTest < ActionController::TestCase
 
     customer.reload
 
-    assert_equal new_name, response['name']
+    assert_equal new_name, response['customer']['name']
     assert_equal new_name, customer.name
   end
-  
+
 end
