@@ -22,7 +22,7 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
     
     controller.set('customers', undefined);
     controller.set('vehicle', undefined);
-    controller.set('vehicleCustomerListener', undefined)
+    controller.set('vehicleCustomerListener', undefined);
     
     this.store.find('customer').then(function (customers) {
       controller.set('customers', customers);

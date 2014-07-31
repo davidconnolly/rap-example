@@ -18,8 +18,6 @@
 //= require ember-data
 //= require ember-easyForm-v1.0.0.beta.1
 //= require bootstrap-datepicker
-//= require ace/ace
-//= require ace/ace-extra
 //= require ember_override
 //= require_self
 //= require rap_example
