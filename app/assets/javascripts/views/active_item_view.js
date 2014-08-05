@@ -1,4 +1,4 @@
-RapExample.ActiveItemView = Ember.LinkView.extend({
+AutoMechanic.ActiveItemView = Ember.LinkView.extend({
   tagName: 'li',
   activeClass: 'active',
   click: function() {

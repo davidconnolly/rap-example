@@ -1,10 +1,10 @@
-RapExample.CustomerRoute = Ember.Route.extend({
+AutoMechanic.CustomerRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('customer', params.id);
   }
 });
 
-RapExample.CustomersIndexRoute = Ember.Route.extend({
+AutoMechanic.CustomersIndexRoute = Ember.Route.extend({
   model: function(params) {
     return this.store.find('customer');
   },
@@ -13,7 +13,7 @@ RapExample.CustomersIndexRoute = Ember.Route.extend({
   }
 });
 
-RapExample.CustomersNewRoute = Ember.Route.extend({
+AutoMechanic.CustomersNewRoute = Ember.Route.extend({
   model: function (params) {
     return this.store.createRecord('customer');
   },

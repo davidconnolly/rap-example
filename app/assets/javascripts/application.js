@@ -20,10 +20,10 @@
 //= require bootstrap-datepicker
 //= require ember_override
 //= require_self
-//= require rap_example
+//= require auto-mechanic
 //
 // For more details see: http://emberjs.com/guides/application/
-window.RapExample = Ember.Application.create({
+window.AutoMechanic = Ember.Application.create({
  LOG_TRANSITIONS: true // basic logging of successful transitions
 });
 

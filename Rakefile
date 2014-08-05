@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-RapExample::Application.load_tasks
+AutoMechanic::Application.load_tasks

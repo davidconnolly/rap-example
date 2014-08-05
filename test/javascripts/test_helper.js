@@ -36,11 +36,11 @@ document.write('<style>#ember-testing-container { position: absolute; background
 document.write('<div id="ember-testing-container"><div id="ember-testing"></div></div>');
 
 
-RapExample.rootElement = '#ember-testing';
-RapExample.setupForTesting();
-RapExample.injectTestHelpers();
+AutoMechanic.rootElement = '#ember-testing';
+AutoMechanic.setupForTesting();
+AutoMechanic.injectTestHelpers();
 
-RapExample.safeReset = function () {
+AutoMechanic.safeReset = function () {
   this._readinessDeferrals = 1;
 
   function handleReset() {
@@ -77,7 +77,7 @@ function hasContent(content) {
 }
 
 function currentRoute() {
-  return RapExample.__container__.lookup('controller:application').get('currentRouteName');
+  return AutoMechanic.__container__.lookup('controller:application').get('currentRouteName');
 }
 
 // RAILS_ENV=test rake teaspoon

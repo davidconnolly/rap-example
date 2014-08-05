@@ -1,6 +1,6 @@
 module("Integration - Customers test", {
   setup: function () {
-    RapExample.safeReset();
+    AutoMechanic.safeReset();
   }
 });
 

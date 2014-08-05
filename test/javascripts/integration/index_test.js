@@ -1,6 +1,6 @@
 module("Integration - Index test", {
   setup: function () {
-    RapExample.safeReset();
+    AutoMechanic.safeReset();
   }
 });
 

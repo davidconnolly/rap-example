@@ -1,6 +1,6 @@
-RapExample.CustomersController = Ember.Controller.extend({ });
+AutoMechanic.CustomersController = Ember.Controller.extend({ });
 
-RapExample.CustomersIndexController = Ember.Controller.extend({
+AutoMechanic.CustomersIndexController = Ember.Controller.extend({
   actions: {
     deleteVehicle: function (vehicle) {
       vehicle.deleteRecord();
@@ -29,9 +29,9 @@ RapExample.CustomersIndexController = Ember.Controller.extend({
   }
 });
 
-RapExample.CustomersShowController = Ember.Controller.extend({ });
+AutoMechanic.CustomersShowController = Ember.Controller.extend({ });
 
-RapExample.CustomersNewController = Ember.Controller.extend({
+AutoMechanic.CustomersNewController = Ember.Controller.extend({
   needs: ['customers'],
   isNew: true,
 

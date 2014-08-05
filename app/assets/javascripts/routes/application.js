@@ -1,4 +1,4 @@
-RapExample.ApplicationRoute = Ember.Route.extend({
+AutoMechanic.ApplicationRoute = Ember.Route.extend({
   actions: {
     error: function(error, transition) {
       // handle the error

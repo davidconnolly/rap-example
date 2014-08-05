@@ -1,10 +1,10 @@
-RapExample.VehiclesController = Ember.Controller.extend({ });
+AutoMechanic.VehiclesController = Ember.Controller.extend({ });
 
-RapExample.VehiclesIndexController = Ember.Controller.extend({ });
+AutoMechanic.VehiclesIndexController = Ember.Controller.extend({ });
 
-RapExample.VehiclesShowController = Ember.Controller.extend({ });
+AutoMechanic.VehiclesShowController = Ember.Controller.extend({ });
 
-RapExample.VehiclesNewController = Ember.Controller.extend({
+AutoMechanic.VehiclesNewController = Ember.Controller.extend({
   needs: ['vehicles'],
   isNew: true,
   vehicleCustomerListener: undefined,
