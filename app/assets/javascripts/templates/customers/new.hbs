@@ -1,15 +1,22 @@
-{{#form-for controller wrapper="twitter-bootstrap"}}
-  {{#with customer}}
-  <div class="row">
-    <div class="col-md-6">
-      {{input name}}
-    </div>
+<div class="row">
+  <div class="col-md-offset-1 page-header">
+    <h1>Add Customer</h1>
   </div>
-  {{/with}}
-  <div class="form-actions">
-    <button class="btn btn-primary" {{action 'submit'}}>
-      <i class="fa fa-check"></i>
-      Submit
-    </button>
-  </div>  
-{{/form-for}}
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+  {{#form-for controller wrapper="twitter-bootstrap"}}
+    {{#with customer}}
+      {{input name}}
+    {{/with}}
+
+    <div class="btn-group">
+      <button class="btn btn-primary" {{action 'submit'}}>
+        <i class="fa fa-check"></i>
+        Submit
+      </button>
+    </div>
+  {{/form-for}}
+  </div>
+</div>

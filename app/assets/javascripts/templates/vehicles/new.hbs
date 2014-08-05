@@ -1,17 +1,24 @@
-{{#form-for controller wrapper="twitter-bootstrap"}}
-  {{#with vehicle}}
-  <div class="row">
-    <div class="col-md-6">
+<div class="row">
+  <div class="col-md-offset-1 page-header">
+    <h1>Add Vehicle</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-offset-1">
+  {{#form-for controller wrapper="twitter-bootstrap"}}
+    {{#with vehicle}}
       {{input year}}
       {{input make}}
       {{input customer as="select" collection="controller.customers" optionLabelPath="content.name" optionValuePath="content" value="controller.vehicleCustomerListener"}}
+    {{/with}}
+
+    <div class="btn-group">
+      <button class="btn btn-primary" {{action 'submit'}}>
+        <i class="fa fa-check"></i>
+        Submit
+      </button>
     </div>
+  {{/form-for}}
   </div>
-  {{/with}}
-  <div class="form-actions">
-    <button class="btn btn-primary" {{action 'submit'}}>
-      <i class="fa fa-check"></i>
-      Submit
-    </button>
-  </div>  
-{{/form-for}}
+</div>

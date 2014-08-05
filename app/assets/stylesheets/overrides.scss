@@ -1,0 +1,17 @@
+/*
+ *= require overrides
+*/
+
+/* Initializers and Mixins */
+@import "bootstrap/simple-sidebar";
+
+/* Simple-Sidebar */
+#sidebar-wrapper {
+  top: 51px;
+}
+
+/* Bootstrap */
+.btn-group {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

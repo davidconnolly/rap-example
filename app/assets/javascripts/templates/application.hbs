@@ -1,44 +1,41 @@
-<div data-role="body-class" {{bind-attr class="bodyClass"}}>
-  <div class="navbar navbar-fixed-top navbar-default" id="navbar">
+<div id="wrapper">
+
+  <!-- Header -->
+  <div class="navbar-fixed-top" style="margin:0;">
     <div class="navbar-container" id="navbar-container">
-      <div class="navbar-header pull-left">
-        <div class="navbar-brand">
-          <i class="fa fa-wrench"></i> Jim's Auto Repair
-        </div>
+      <div class="navbar-brand">
+        <i class="fa fa-wrench"></i> Jim's Auto Repair
       </div>
-      <!-- /.navbar-header -->
     </div>
-    <!-- /.container -->
   </div>
-  <div class="main-container" id="main-container">
-    <div class="main-container-inner">
-      <div class="sidebar sidebar-fixed" {{bind-attr class="menuMini:menu-min"}} id="sidebar">
-        <ul class="nav nav-list">
-          {{#active-tag path="index"}}
-            {{#link-to "index"}}
-              <i class="fa fa-home"></i>
-              <span class="menu-text"> Index </span>
-            {{/link-to}}
-          {{/active-tag}}
-          {{#active-tag path="customers,customers.index"}}
-            {{#link-to "customers"}}
-              <i class="fa fa-male"></i>
-              <span class="menu-text"> Customers </span>
-            {{/link-to}}
-          {{/active-tag}}
-          {{#active-tag path="vehicles,vehicles.index"}}
-            {{#link-to "vehicles"}}
-              <i class="fa fa-truck"></i>
-              <span class="menu-text"> Vehicles </span>
-            {{/link-to}}
-          {{/active-tag}}
-        </ul>
-      </div>
-      <div class="main-content" {{bind-attr class="menuMini:menu-min"}}>
-        <div class="page-content" style="padding-top: 55px">
-          {{outlet}}
-        </div>
-      </div>
-    </div>
-  </div>  
+
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        {{#link-to "index"}}
+          <i class="fa fa-home"></i>
+          <span class="menu-text"> Index </span>
+        {{/link-to}}
+      </li>
+      <li class="sidebar-brand">
+        {{#link-to "customers"}}
+          <i class="fa fa-male"></i>
+          <span class="menu-text"> Customers </span>
+        {{/link-to}}
+      </li>
+      <li class="sidebar-brand">
+        {{#link-to "vehicles"}}
+          <i class="fa fa-truck"></i>
+          <span class="menu-text"> Vehicles </span>
+        {{/link-to}}
+      </ul>
+    </ul>
+  </div>
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    {{outlet}}
+  </div>
+
 </div>
