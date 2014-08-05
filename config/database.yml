@@ -1,0 +1,22 @@
+defaults: &defaults
+  adapter: postgresql
+  host: localhost
+  #schema_search_path: "public, postgis"
+  username: auto-mechanic
+  password: passpass
+
+development:
+  <<: *defaults
+  database: auto-mechanic_dev
+
+test:
+  <<: *defaults
+  database: auto-mechanic_test
+
+staging:
+  <<: *defaults
+  database: auto-mechanic_staging
+
+production:
+  <<: *defaults
+  database: auto-mechanic_prod
