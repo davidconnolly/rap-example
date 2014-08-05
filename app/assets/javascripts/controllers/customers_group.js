@@ -1,10 +1,8 @@
 RapExample.CustomersController = Ember.Controller.extend({ });
 
-RapExample.CustomersIndexController = Ember.Controller.extend({ 
+RapExample.CustomersIndexController = Ember.Controller.extend({
   actions: {
     deleteVehicle: function (vehicle) {
-      var _this = this;
-
       vehicle.deleteRecord();
       vehicle.save()
         .then(function () { })
@@ -13,16 +11,19 @@ RapExample.CustomersIndexController = Ember.Controller.extend({
         });
     },
     deleteCustomer: function (customer) {
-      var _this = this;            
       var vehicles = customer.get('vehicles');
 
       vehicles.then(function (){
         vehicles.forEach(function(vehicle){
           vehicle.unloadRecord();
         });
-        
+
         customer.deleteRecord()
-        customer.save().then(function () { });
+        customer.save()
+          .then(function () { })
+          .catch(function (error) {
+            customer.rollback();
+          });
       });
     }
   }
@@ -30,7 +31,7 @@ RapExample.CustomersIndexController = Ember.Controller.extend({
 
 RapExample.CustomersShowController = Ember.Controller.extend({ });
 
-RapExample.CustomersNewController = Ember.Controller.extend({ 
+RapExample.CustomersNewController = Ember.Controller.extend({
   needs: ['customers'],
   isNew: true,
 
@@ -38,11 +39,6 @@ RapExample.CustomersNewController = Ember.Controller.extend({
     submit: function () {
       var _this = this;
       var customer = this.get('customer');
-
-      if (customer.get('errors')) {
-        customer.set('errors', null);
-        customer.send('becameValid');
-      }
 
       customer.save()
         .then(function (object) {

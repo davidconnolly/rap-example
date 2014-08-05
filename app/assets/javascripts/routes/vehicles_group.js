@@ -19,16 +19,16 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
   },
   setupController: function (controller, model, params) {
     var _this = this;
-    
+
     controller.set('customers', undefined);
     controller.set('vehicle', undefined);
     controller.set('vehicleCustomerListener', undefined);
-    
+
     this.store.find('customer').then(function (customers) {
       controller.set('customers', customers);
       controller.set('vehicle', model);
-      controller.set('vehicleCustomerListener', customers.get('lastObject'));      
-      
+      controller.set('vehicleCustomerListener', customers.get('lastObject'));
+
       if (params.customer_id) {
         var customer = _this.store.find('customer', params.customer_id);
         customer.then(
@@ -42,7 +42,7 @@ RapExample.VehiclesNewRoute = Ember.Route.extend({
       }
     });
   },
-  
+
   actions:{
     willTransition: function (transition) {
       var vehicle = this.modelFor('vehicles.new');

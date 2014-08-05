@@ -4,7 +4,7 @@ RapExample.VehiclesIndexController = Ember.Controller.extend({ });
 
 RapExample.VehiclesShowController = Ember.Controller.extend({ });
 
-RapExample.VehiclesNewController = Ember.Controller.extend({ 
+RapExample.VehiclesNewController = Ember.Controller.extend({
   needs: ['vehicles'],
   isNew: true,
   vehicleCustomerListener: undefined,
@@ -18,11 +18,6 @@ RapExample.VehiclesNewController = Ember.Controller.extend({
     submit: function () {
       var _this = this;
       var vehicle = this.get('vehicle');
-
-      if (vehicle.get('errors')) {
-        vehicle.set('errors', null);
-        vehicle.send('becameValid');
-      }
 
       vehicle.save()
         .then(function (object) {
