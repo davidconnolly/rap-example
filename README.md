@@ -1,4 +1,4 @@
-# auto-mechanic
+# Auto Mechanic
 
 [Staging Environment](http://www.auto-mechanic.davidjconnolly.com/)
 
