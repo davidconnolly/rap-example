@@ -2,8 +2,8 @@ defaults: &defaults
   adapter: postgresql
   host: localhost
   #schema_search_path: "public, postgis"
-  username: auto-mechanic
-  password: passpass
+  username: automechanic
+  password: password
 
 development:
   <<: *defaults
